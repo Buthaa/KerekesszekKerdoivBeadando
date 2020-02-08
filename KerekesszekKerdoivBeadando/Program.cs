@@ -16,7 +16,7 @@ namespace KerekesszekKerdoivBeadando
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Kerdoiv_FM());
+            Application.Run(new nyito_FM());
         }
     }
 }

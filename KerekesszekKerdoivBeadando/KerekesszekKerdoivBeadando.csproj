@@ -69,6 +69,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="admin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="admin.Designer.cs">
+      <DependentUpon>admin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="bejentkezes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="bejentkezes.Designer.cs">
+      <DependentUpon>bejentkezes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="felhasznalok.cs" />
     <Compile Include="Kerdoiv.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +96,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="admin.resx">
+      <DependentUpon>admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bejentkezes.resx">
+      <DependentUpon>bejentkezes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Kerdoiv.resx">
       <DependentUpon>Kerdoiv.cs</DependentUpon>
     </EmbeddedResource>
