@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(bejentkezes_FM));
             this.felhasznalonev_tb = new System.Windows.Forms.TextBox();
             this.jelszo_tb = new System.Windows.Forms.TextBox();
             this.bejelentkezes_bt = new System.Windows.Forms.Button();
             this.felhasznalonev_lb = new System.Windows.Forms.Label();
             this.jelszo_lb = new System.Windows.Forms.Label();
+            this.visszaBe_bt = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // felhasznalonev_tb
@@ -77,17 +79,30 @@
             this.jelszo_lb.TabIndex = 4;
             this.jelszo_lb.Text = "Jelszó:";
             // 
+            // visszaBe_bt
+            // 
+            this.visszaBe_bt.Location = new System.Drawing.Point(297, 193);
+            this.visszaBe_bt.Name = "visszaBe_bt";
+            this.visszaBe_bt.Size = new System.Drawing.Size(112, 23);
+            this.visszaBe_bt.TabIndex = 5;
+            this.visszaBe_bt.Text = "Viszza a főoldalra!";
+            this.visszaBe_bt.UseVisualStyleBackColor = true;
+            this.visszaBe_bt.Click += new System.EventHandler(this.VisszaBe_bt_Click);
+            // 
             // bejentkezes_FM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(421, 228);
+            this.Controls.Add(this.visszaBe_bt);
             this.Controls.Add(this.jelszo_lb);
             this.Controls.Add(this.felhasznalonev_lb);
             this.Controls.Add(this.bejelentkezes_bt);
             this.Controls.Add(this.jelszo_tb);
             this.Controls.Add(this.felhasznalonev_tb);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "bejentkezes_FM";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bejelentkezés!";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -101,5 +116,6 @@
         private System.Windows.Forms.Button bejelentkezes_bt;
         private System.Windows.Forms.Label felhasznalonev_lb;
         private System.Windows.Forms.Label jelszo_lb;
+        private System.Windows.Forms.Button visszaBe_bt;
     }
 }

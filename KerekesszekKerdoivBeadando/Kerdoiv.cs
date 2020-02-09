@@ -162,5 +162,13 @@ namespace KerekesszekKerdoivBeadando
         {
             harendelkezik_GB.Enabled = true;
         }
+
+        private void VisszaKer_bt_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            nyito_FM nyito_fm = new nyito_FM();
+            nyito_fm.ShowDialog();
+            this.Close();
+        }
     }
 }

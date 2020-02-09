@@ -47,6 +47,7 @@
             this.marka_CBOX = new System.Windows.Forms.ComboBox();
             this.marka_LB = new System.Windows.Forms.Label();
             this.rendelkezik_GB = new System.Windows.Forms.GroupBox();
+            this.rendelkezikNem_RB = new System.Windows.Forms.RadioButton();
             this.rendelkezikIgen_RB = new System.Windows.Forms.RadioButton();
             this.kerekesszeke_GB = new System.Windows.Forms.GroupBox();
             this.belso_GB = new System.Windows.Forms.GroupBox();
@@ -60,6 +61,8 @@
             this.szin_CBOX = new System.Windows.Forms.ComboBox();
             this.szin_LB = new System.Windows.Forms.Label();
             this.extrak_GB = new System.Windows.Forms.GroupBox();
+            this.extrakkalNem_RB = new System.Windows.Forms.RadioButton();
+            this.extrakkalIgen_RB = new System.Windows.Forms.RadioButton();
             this.rendelkezik_LB = new System.Windows.Forms.Label();
             this.harendelkezik_GB = new System.Windows.Forms.GroupBox();
             this.ulesdontes_CHBOX = new System.Windows.Forms.CheckBox();
@@ -68,9 +71,7 @@
             this.pohartarto_CHBOX = new System.Windows.Forms.CheckBox();
             this.kesz_BTN = new System.Windows.Forms.Button();
             this.also_LB = new System.Windows.Forms.Label();
-            this.extrakkalIgen_RB = new System.Windows.Forms.RadioButton();
-            this.rendelkezikNem_RB = new System.Windows.Forms.RadioButton();
-            this.extrakkalNem_RB = new System.Windows.Forms.RadioButton();
+            this.visszaKer_bt = new System.Windows.Forms.Button();
             this.szemelyesAdatok_GB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.eletkor_NUD)).BeginInit();
             this.neme_GB.SuspendLayout();
@@ -273,6 +274,18 @@
             this.rendelkezik_GB.TabStop = false;
             this.rendelkezik_GB.Text = "Ön rendelkezik kerekesszékkel:";
             // 
+            // rendelkezikNem_RB
+            // 
+            this.rendelkezikNem_RB.AutoSize = true;
+            this.rendelkezikNem_RB.Checked = true;
+            this.rendelkezikNem_RB.Location = new System.Drawing.Point(134, 28);
+            this.rendelkezikNem_RB.Name = "rendelkezikNem_RB";
+            this.rendelkezikNem_RB.Size = new System.Drawing.Size(48, 17);
+            this.rendelkezikNem_RB.TabIndex = 10;
+            this.rendelkezikNem_RB.TabStop = true;
+            this.rendelkezikNem_RB.Text = "nem";
+            this.rendelkezikNem_RB.UseVisualStyleBackColor = true;
+            // 
             // rendelkezikIgen_RB
             // 
             this.rendelkezikIgen_RB.AutoSize = true;
@@ -409,6 +422,29 @@
             this.extrak_GB.TabStop = false;
             this.extrak_GB.Text = "Extrák";
             // 
+            // extrakkalNem_RB
+            // 
+            this.extrakkalNem_RB.AutoSize = true;
+            this.extrakkalNem_RB.Checked = true;
+            this.extrakkalNem_RB.Location = new System.Drawing.Point(169, 40);
+            this.extrakkalNem_RB.Name = "extrakkalNem_RB";
+            this.extrakkalNem_RB.Size = new System.Drawing.Size(45, 17);
+            this.extrakkalNem_RB.TabIndex = 13;
+            this.extrakkalNem_RB.TabStop = true;
+            this.extrakkalNem_RB.Text = "nem";
+            this.extrakkalNem_RB.UseVisualStyleBackColor = true;
+            // 
+            // extrakkalIgen_RB
+            // 
+            this.extrakkalIgen_RB.AutoSize = true;
+            this.extrakkalIgen_RB.Location = new System.Drawing.Point(102, 40);
+            this.extrakkalIgen_RB.Name = "extrakkalIgen_RB";
+            this.extrakkalIgen_RB.Size = new System.Drawing.Size(45, 17);
+            this.extrakkalIgen_RB.TabIndex = 12;
+            this.extrakkalIgen_RB.Text = "igen";
+            this.extrakkalIgen_RB.UseVisualStyleBackColor = true;
+            this.extrakkalIgen_RB.Click += new System.EventHandler(this.extrakkalIgen_RB_Click);
+            // 
             // rendelkezik_LB
             // 
             this.rendelkezik_LB.AutoSize = true;
@@ -492,46 +528,22 @@
             this.also_LB.Text = "Amifélkövérel szedett, azt kötelező kitölteni!";
             this.also_LB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // extrakkalIgen_RB
+            // visszaKer_bt
             // 
-            this.extrakkalIgen_RB.AutoSize = true;
-            this.extrakkalIgen_RB.Location = new System.Drawing.Point(102, 40);
-            this.extrakkalIgen_RB.Name = "extrakkalIgen_RB";
-            this.extrakkalIgen_RB.Size = new System.Drawing.Size(45, 17);
-            this.extrakkalIgen_RB.TabIndex = 12;
-            this.extrakkalIgen_RB.Text = "igen";
-            this.extrakkalIgen_RB.UseVisualStyleBackColor = true;
-            this.extrakkalIgen_RB.Click += new System.EventHandler(this.extrakkalIgen_RB_Click);
-            // 
-            // rendelkezikNem_RB
-            // 
-            this.rendelkezikNem_RB.AutoSize = true;
-            this.rendelkezikNem_RB.Checked = true;
-            this.rendelkezikNem_RB.Location = new System.Drawing.Point(134, 28);
-            this.rendelkezikNem_RB.Name = "rendelkezikNem_RB";
-            this.rendelkezikNem_RB.Size = new System.Drawing.Size(48, 17);
-            this.rendelkezikNem_RB.TabIndex = 10;
-            this.rendelkezikNem_RB.TabStop = true;
-            this.rendelkezikNem_RB.Text = "nem";
-            this.rendelkezikNem_RB.UseVisualStyleBackColor = true;
-            // 
-            // extrakkalNem_RB
-            // 
-            this.extrakkalNem_RB.AutoSize = true;
-            this.extrakkalNem_RB.Checked = true;
-            this.extrakkalNem_RB.Location = new System.Drawing.Point(169, 40);
-            this.extrakkalNem_RB.Name = "extrakkalNem_RB";
-            this.extrakkalNem_RB.Size = new System.Drawing.Size(45, 17);
-            this.extrakkalNem_RB.TabIndex = 13;
-            this.extrakkalNem_RB.TabStop = true;
-            this.extrakkalNem_RB.Text = "nem";
-            this.extrakkalNem_RB.UseVisualStyleBackColor = true;
+            this.visszaKer_bt.Location = new System.Drawing.Point(431, 455);
+            this.visszaKer_bt.Name = "visszaKer_bt";
+            this.visszaKer_bt.Size = new System.Drawing.Size(112, 23);
+            this.visszaKer_bt.TabIndex = 9;
+            this.visszaKer_bt.Text = "Viszza a főoldalra!";
+            this.visszaKer_bt.UseVisualStyleBackColor = true;
+            this.visszaKer_bt.Click += new System.EventHandler(this.VisszaKer_bt_Click);
             // 
             // Kerdoiv_FM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(555, 524);
+            this.Controls.Add(this.visszaKer_bt);
             this.Controls.Add(this.also_LB);
             this.Controls.Add(this.kesz_BTN);
             this.Controls.Add(this.extrak_GB);
@@ -541,6 +553,7 @@
             this.Controls.Add(this.szemelyesAdatok_GB);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Kerdoiv_FM";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kérdőív a kerekesszékéről.";
             this.Load += new System.EventHandler(this.Kerdoiv_FM_Load);
             this.szemelyesAdatok_GB.ResumeLayout(false);
@@ -611,6 +624,7 @@
         private System.Windows.Forms.RadioButton extrakkalIgen_RB;
         private System.Windows.Forms.RadioButton rendelkezikNem_RB;
         private System.Windows.Forms.RadioButton extrakkalNem_RB;
+        private System.Windows.Forms.Button visszaKer_bt;
     }
 }
 

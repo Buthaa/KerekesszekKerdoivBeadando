@@ -49,5 +49,13 @@ namespace KerekesszekKerdoivBeadando
             }
             conn.Close();
         }
+
+        private void VisszaBe_bt_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            nyito_FM nyito_fm = new nyito_FM();
+            nyito_fm.ShowDialog();
+            this.Close();
+        }
     }
 }

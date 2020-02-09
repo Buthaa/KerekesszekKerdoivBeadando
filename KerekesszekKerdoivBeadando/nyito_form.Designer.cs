@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(nyito_FM));
             this.Udvozlo_szoveg = new System.Windows.Forms.Label();
             this.iranyKerdoiv_bt = new System.Windows.Forms.Button();
             this.iranyBejentkezes_bt = new System.Windows.Forms.Button();
@@ -70,7 +71,9 @@
             this.Controls.Add(this.iranyBejentkezes_bt);
             this.Controls.Add(this.iranyKerdoiv_bt);
             this.Controls.Add(this.Udvozlo_szoveg);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "nyito_FM";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.ResumeLayout(false);
             this.PerformLayout();
 
