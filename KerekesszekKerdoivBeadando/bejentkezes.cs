@@ -13,11 +13,6 @@ namespace KerekesszekKerdoivBeadando
 {
     public partial class bejentkezes_FM : Form
     {
-        string tablaLetrehozas = @"CREATE TABLE  IF NOT EXISTS `felhasznalok` (
-                                        `id` int(11) PRIMARY KEY AUTO_INCREMENT,
-                                        `felhasznalonev` varchar(255) COLLATE utf8_hungarian_ci NOT NULL UNIQUE,
-                                        `jelszo` varchar(255) NOT NULL
-                                 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;";
         MySqlConnection conn;
         MySqlCommand cmd;
         MySqlDataReader dr;
@@ -25,7 +20,7 @@ namespace KerekesszekKerdoivBeadando
         {
             InitializeComponent();
             jelszo_tb.PasswordChar = '*';
-            conn = new MySqlConnection("Server=localhost; Database=bejelentkezes; Uid=root; Pwd=;");
+            conn = new MySqlConnection("Server=localhost; Database=kerdoiv; Uid=root; Pwd=;");
             conn.Open();
         }
         private void Bejelentkezes_bt_Click(object sender, EventArgs e)
@@ -47,7 +42,7 @@ namespace KerekesszekKerdoivBeadando
             {
                 MessageBox.Show("Sikertelen belépés!\nKérem ellenőrizze a Felhasználónevét és Jeszavát!");
             }
-            conn.Close();
+            dr.Close();
         }
 
         private void VisszaBe_bt_Click(object sender, EventArgs e)

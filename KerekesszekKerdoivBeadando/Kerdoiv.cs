@@ -8,20 +8,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using MySql.Data.MySqlClient;
 
 namespace KerekesszekKerdoivBeadando
 {
     public partial class Kerdoiv_FM : Form
     {
+        MySqlConnection conn;
+        MySqlCommand cmd;
         public Kerdoiv_FM()
         {
             InitializeComponent();
+            conn = new MySqlConnection("Server=localhost; Database=kerdoiv; Uid=root; Pwd=; CharSet=utf8;");
+            conn.Open();
         }
         public void comboxok()
         {
             marka_CBOX.Items.Add("Ottobock");
             marka_CBOX.Items.Add("Invacare");
             marka_CBOX.Items.Add("Meyra");
+            marka_CBOX.Items.Add("Rehab Rt.");
             ules_CBOX.Items.Add("Alap");
             ules_CBOX.Items.Add("Recaro");
         }
@@ -107,12 +113,72 @@ namespace KerekesszekKerdoivBeadando
             akkumlator_NUD.Value = 0;
             sebesseg_TBOX.Clear();
             harendelkezik_GB.Enabled = true;
-            extrakkalIgen_RB.Checked = true;
+            extrakkalIgen_RB.Checked = false;
             pohartarto_CHBOX.Checked = false;
             tomorgumi_CHBOX.Checked = false;
             ulesmagasitas_CHBOX.Checked = false;
             ulesdontes_CHBOX.Checked = false;
             extrak_GB.Enabled = false;
+        }
+        private void kifajlSQL()
+        {
+            var cmd = conn.CreateCommand();
+            cmd.CommandText = @"INSERT INTO `valaszok`(nev, nem, eletkor, onRendelkezikE, marka, modell,
+                                                       szekKora, suly, szine, ulesTipus, akkumlatorokSzama, maxSebesseg,
+                                                       rendelkezikExtrakkal, pohartarto, tomorgumi, ulesmagasitas, ulesdontes)
+
+                                VALUES (@nev, @nem, @eletkor, @onRendelkezikE, @marka, @modell, @szekKora, @suly, @szine, @ulesTipus,
+                                        @akkumlatorokSzama, @maxSebesseg, @rendelkezikExtrakkal, @pohartarto, @tomorgumi, @ulesmagasitas, @ulesdontes)";
+            cmd.Parameters.AddWithValue("@nev", nev_TB.Text);
+            cmd.Parameters.AddWithValue("@nem", ferfi_RB.Checked ? 0 : 1);
+            cmd.Parameters.AddWithValue("@eletkor", eletkor_NUD.Value);
+            if (rendelkezikIgen_RB.Checked)
+            {
+                cmd.Parameters.AddWithValue("@onRendelkezikE", 0);
+                cmd.Parameters.AddWithValue("@marka", marka_CBOX.SelectedItem);
+                cmd.Parameters.AddWithValue("@modell", modell_TBOX.Text);
+                cmd.Parameters.AddWithValue("@szekKora", hanyEves_TBOX.Text);
+                cmd.Parameters.AddWithValue("@suly", suly_NUD.Value);
+                cmd.Parameters.AddWithValue("@szine", szin_CBOX.SelectedItem);
+                cmd.Parameters.AddWithValue("@ulesTipus", ules_CBOX.SelectedItem);
+                cmd.Parameters.AddWithValue("@akkumlatorokSzama", akkumlator_NUD.Value);
+                cmd.Parameters.AddWithValue("@maxSebesseg", sebesseg_TBOX.Text);
+                if (extrakkalIgen_RB.Checked)
+                {
+                    cmd.Parameters.AddWithValue("@rendelkezikExtrakkal", 0);
+                    cmd.Parameters.AddWithValue("@pohartarto", pohartarto_CHBOX.Checked ? 0 : 1);
+                    cmd.Parameters.AddWithValue("@tomorgumi", tomorgumi_CHBOX.Checked ? 0 : 1);
+                    cmd.Parameters.AddWithValue("@ulesmagasitas", ulesmagasitas_CHBOX.Checked ? 0 : 1);
+                    cmd.Parameters.AddWithValue("@ulesdontes", ulesdontes_CHBOX.Checked ? 0 : 1);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@rendelkezikExtrakkal", 1);
+                    cmd.Parameters.AddWithValue("@pohartarto", pohartarto_CHBOX.Checked ? 0 : 1);
+                    cmd.Parameters.AddWithValue("@tomorgumi", tomorgumi_CHBOX.Checked ? 0 : 1);
+                    cmd.Parameters.AddWithValue("@ulesmagasitas", ulesmagasitas_CHBOX.Checked ? 0 : 1);
+                    cmd.Parameters.AddWithValue("@ulesdontes", ulesdontes_CHBOX.Checked ? 0 : 1);
+                }
+                cmd.ExecuteNonQuery();
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@onRendelkezikE", 1);
+                cmd.Parameters.AddWithValue("@marka", null);
+                cmd.Parameters.AddWithValue("@modell", null);
+                cmd.Parameters.AddWithValue("@szekKora", null);
+                cmd.Parameters.AddWithValue("@suly", null);
+                cmd.Parameters.AddWithValue("@szine", null);
+                cmd.Parameters.AddWithValue("@ulesTipus", null);
+                cmd.Parameters.AddWithValue("@akkumlatorokSzama", null);
+                cmd.Parameters.AddWithValue("@maxSebesseg", null);
+                cmd.Parameters.AddWithValue("@rendelkezikExtrakkal", null);
+                cmd.Parameters.AddWithValue("@pohartarto", null);
+                cmd.Parameters.AddWithValue("@tomorgumi", null);
+                cmd.Parameters.AddWithValue("@ulesmagasitas", null);
+                cmd.Parameters.AddWithValue("@ulesdontes", null);
+                cmd.ExecuteNonQuery();
+            }
         }
         private void Kerdoiv_FM_Load(object sender, EventArgs e)
         {
@@ -149,9 +215,9 @@ namespace KerekesszekKerdoivBeadando
         private void kesz_BTN_Click(object sender, EventArgs e)
         {
             kifajl();
+            kifajlSQL();
             torles();
         }
-
         private void rendelkezikIgen_RB_Click(object sender, EventArgs e)
         {
             sajatKerekesszek_GB.Enabled = true;
@@ -162,7 +228,6 @@ namespace KerekesszekKerdoivBeadando
         {
             harendelkezik_GB.Enabled = true;
         }
-
         private void VisszaKer_bt_Click(object sender, EventArgs e)
         {
             this.Hide();
