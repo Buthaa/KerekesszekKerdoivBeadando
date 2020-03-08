@@ -99,9 +99,9 @@ namespace KerekesszekKerdoivBeadando
                 atlagEletkor_lb.Text = string.Format("Átlag életkor: {0}", valaszok.Average(x => x.Eletkor));
                 foreach (var valasz in valaszok)
                 {
-                    if (valaszok.Count(x => x.OnRendelkezikE) > 0)
+                    if (valasz.OnRendelkezikE)
                     {
-                        if (szekek.ContainsKey(valasz.OnRendelkezikE))
+                        if (szekek.ContainsKey(valasz.Marka))
                         {
                             szekek[valasz.Marka]++;
                         }
@@ -111,7 +111,11 @@ namespace KerekesszekKerdoivBeadando
                 {
                     if (szekek.ContainsKey("Ottobock"))
                     {
-                        ottobock_lb.Text = string.Format("{0} {1}", markak.Key, markak.Value);
+                        ottobock_lb.Text = string.Format("Ottobock: {0} db", markak.Value);
+                    }
+                    else
+                    {
+                        ottobock_lb.Text = "nem";
                     }
                 }
             }
